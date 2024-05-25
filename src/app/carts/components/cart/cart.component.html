@@ -1,0 +1,27 @@
+
+
+
+
+
+<p *ngIf="sumProducts!=0" > Total Price : {{sumProducts}}</p>
+<!-- product card display -->
+
+<div  class="row">
+  <div *ngFor="let product of cartsProducts , let i = index" class="col-lg-3 col-md-4 col-sm-6 col-xs-12  ">
+    <div  class="card" style="width: 18rem;">
+      <img src={{product.image}} class="card-img-top" alt="not found">
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text count">count : {{product.rating.count}}</p>
+        <a class="btn btn-primary" (click)="deleteFromCart(i)" > delete From Cart </a>
+        <span> {{product.price}} : L.E </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info " role="alert" *ngIf="sumProducts==0">
+ <div>
+  No Product Add To Cart
+ </div>
+</div>

@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+
+<!-- dropdown Menu Categories-->
+<!-- <app-select-category> </app-select-category> -->
+<div class="dropdown">
+  <a class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Categories :
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li value="all"><a class="dropdown-item" (click)="getAllProducts() ; display=true ">All</a></li>
+    <li value="electronics"><a class="dropdown-item" (click)="getCustomProduct('e')
+      ; display=false">Electronics</a></li>
+    <li value="jewelery"><a class="dropdown-item" (click)="getCustomProduct('j'); display=false">Jewelery</a></li>
+    <li value="men-clothes"><a class="dropdown-item" (click)="getCustomProduct('m'); display=false">Men's Clothes</a></li>
+    <li value="women-clothes"><a class="dropdown-item" (click)="getCustomProduct('w'); display=false">Women's Clothes</a></li>
+  </ul>
+</div>
+<!-- product card display -->
+
+<div  class="row" *ngIf="display">
+  <div *ngFor="let product of products , let i = index" class="col-lg-3 col-md-4 col-sm-6 col-xs-12  ">
+    <div  class="card" style="width: 18rem;">
+      <img src={{product.image}} class="card-img-top" alt="not found">
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text description">{{product.description}}</p>
+        <p class="card-text count">count : {{product.rating.count}}</p>
+        <a class="btn btn-primary" (click)="addToCart(product)" >Add To Cart </a>
+        <span> {{product.price}} : L.E </span>
+      </div>
+    </div>
+  </div>
+  <div class="text-center" *ngIf="displaySpinner">
+     <app-spinner></app-spinner>
+  </div>
+
+</div>
+
+<!-- products Category card display -->
+
+<div  class="row"  *ngIf="!display">
+  <div *ngFor="let product of productsCategory , let i = index" class="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
+    <div  class="card" style="width: 18rem;">
+      <img src={{product.image}} class="card-img-top" alt="not found">
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text description">{{product.description}}</p>
+        <p class="card-text count">count : {{product.rating.count}}</p>
+        <a class="btn btn-primary" (click)="addToCart(product)" > Add To Cart </a>
+        <span> {{product.price}} : L.E </span>
+      </div>
+    </div>
+  </div>
+  <div class="text-center" *ngIf=" !this.displaySpinnercategory;">
+    <app-spinner></app-spinner>
+ </div>
+</div>
+
+
+
+
+
